@@ -2,7 +2,7 @@
 
 ## Description
 
-I want to analyze who uses my cubes. I what is better for analysis then OLAP cube?
+I want to analyze who uses (my) cubes. I what is better for analysis then OLAP cube?
 
 Its based on ** OlapQueryLog ** loging table. I make standard STAR scheme and then build OLAP cube in Microsoft analysis services (SSAS).
 
