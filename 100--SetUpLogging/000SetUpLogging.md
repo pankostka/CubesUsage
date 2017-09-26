@@ -55,7 +55,7 @@ Watch **hour difference**! Now its 17:17, in table is 15:17! So +2 hour!
 
 ### Adding new column "DateInsert"
 
-[Script](DateInsert.sql) 
+[Script](NewColumnDateInsert.sql) 
 
 ```SQLPL
 
