@@ -47,9 +47,30 @@ SELECT * FROM [OlapQueryLog].[dbo].[OlapQueryLog]
 
 ![510Test.png ](510Test.png) ![.](file:///510Test.png)
 
-Watch **hour difference**! Now its 17:17, in table is 15:17! So -2 hour!
+Watch **hour difference**! Now its 17:17, in table is 15:17! So +2 hour!
 
- 
+### Add Column "DateInsert"
+
+
+```SQL
+
+--ADD NEW COLUMN [DateInsert] WITH DEFAULT GATDATE()
+ALTER TABLE [dbo].[OlapQueryLog] ADD DateInsert [datetime] NULL
+ALTER TABLE [dbo].[OlapQueryLog] ADD CONSTRAINT [DF_OlapQueryLog_DateInsert] DEFAULT (getdate()) FOR [DateInsert]
+
+--UPDATE COLUMN [DateInsert] IF IT IS NULL
+declare @Diff int 
+set @Diff = DATEDIFF(hour, GetUTCDate(), GETDATE()) 
+
+update l 
+set l.DateInsert = DATEADD(HOUR,@Diff,StartTime) 
+-- select DATEADD(HOUR,@Diff,StartTime) 
+from [dbo].[OlapQueryLog] l
+where l.DateInsert is null
+
+```
+
+
 
 ## Links
 
